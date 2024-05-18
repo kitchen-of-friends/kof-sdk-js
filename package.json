@@ -1,0 +1,29 @@
+{
+  "name": "sfl-sdk-js",
+  "version": "0.0.1",
+  "description": "Official Javascript SDK for Soulful Link Protocol",
+  "main": "main.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitchen-of-friends/kof-sdk-js.git"
+  },
+  "author": "Napoleon Lynch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kitchen-of-friends/kof-sdk-js/issues"
+  },
+  "homepage": "https://github.com/kitchen-of-friends/kof-sdk-js#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2"
+  }
+}

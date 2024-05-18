@@ -1,0 +1,40 @@
+import { M00_API_LIST } from "./api/M00-abstract";
+import { BASE_URL } from "./utils/url";
+
+export class SFL {
+  // 构造函数
+  constructor(API_KEY, baseUrl = BASE_URL) {
+    // 初步检查 API_KEY 的有效性
+    if (API_KEY.length != 12) {
+      throw new Error("无效的 API_KEY");
+    }
+
+    // 设置 API_KEY
+    this.API_KEY = API_KEY;
+
+    // 设置基础 URL
+    this.BASE_URL = baseUrl;
+
+    // 初始化 API 列表
+    this.API_MAP = {};
+
+    // 注入多个 API 的调用
+    this.injectApi(M00_API_LIST);
+  }
+
+  // 初始化 API 列表
+  injectApi = (apiList) => {
+    for (const [key, value] of Object.entries(apiList)) {
+      this.API_MAP[key] = value;
+    }
+  };
+
+  // 标准调用
+  async call(code, data) {
+    if (!this.API_MAP[code]) {
+      throw new Error("API 不存在");
+    }
+
+    return await this.API_MAP[code](this.BASE_URL, data);
+  }
+}
