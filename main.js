@@ -1,9 +1,9 @@
 import { M00_API_LIST } from "./api/M00-abstract";
-import { BASE_URL } from "./utils/url";
+import { STG_BASE_URL } from "./utils/url";
 
 export class SFL {
   // 构造函数
-  constructor(API_KEY, baseUrl = BASE_URL) {
+  constructor(API_KEY, baseUrl = STG_BASE_URL) {
     // 初步检查 API_KEY 的有效性
     if (API_KEY.length != 12) {
       throw new Error("无效的 API_KEY");
