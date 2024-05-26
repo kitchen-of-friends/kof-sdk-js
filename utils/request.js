@@ -1,22 +1,16 @@
 // GET
 export const get = async (url, data, options = {}) => {
-  const searchParams = new URLSearchParams();
-  if (data) {
-    Object.keys(data).forEach((key) => {
-      searchParams.append(key, data[key]);
-    });
-  }
-
-  const queryString = searchParams.toString();
-  const fullUrl = queryString ? `${url}?${queryString}` : url;
-
-  const response = await fetch(fullUrl, {
+  const response = await fetch(fullUrl(url, data), {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       ...options.headers,
     },
   });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
 
   return response.json();
 };
@@ -34,6 +28,10 @@ export const post = async (url, data, options = {}) => {
     ...postOptions,
   });
 
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
   return response.json();
 };
 
@@ -50,12 +48,16 @@ export const put = async (url, data, options = {}) => {
     ...putOptions,
   });
 
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
   return response.json();
 };
 
 // DELETE
-export const del = async (url, options = {}) => {
-  const response = await fetch(url, {
+export const del = async (url, data, options = {}) => {
+  const response = await fetch(fullUrl(url, data), {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -63,5 +65,22 @@ export const del = async (url, options = {}) => {
     },
   });
 
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
   return response.json();
+};
+
+const fullUrl = (url, data) => {
+  const searchParams = new URLSearchParams();
+  if (data) {
+    Object.keys(data).forEach((key) => {
+      searchParams.append(key, data[key]);
+    });
+  }
+
+  const queryString = searchParams.toString();
+  const fullUrl = queryString ? `${url}?${queryString}` : url;
+  return fullUrl;
 };
