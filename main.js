@@ -7,9 +7,9 @@ export class SFL {
   // 构造函数
   constructor(API_KEY, baseUrl) {
     // 初步检查 API_KEY 的有效性
-    if (API_KEY.length != 12) {
-      throw new Error("无效的 API_KEY");
-    }
+    // if (API_KEY.length != 12) {
+    //   throw new Error("无效的 API_KEY");
+    // }
 
     // 检查输入点
     if (!baseUrl) {
