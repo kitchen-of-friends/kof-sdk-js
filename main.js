@@ -1,6 +1,7 @@
-import { M00_API_LIST } from "./api/m00-abstract";
-import { M03_API_LIST } from "./api/m03-social";
-import { M04_API_LIST } from "./api/m04-content";
+import { M00_API_LIST } from "./api/m00-abstract/index.js";
+import { M01_API_LIST } from "./api/m01-idc/index.js";
+import { M03_API_LIST } from "./api/m03-social/index.js";
+import { M04_API_LIST } from "./api/m04-content/index.js";
 
 export class SFL {
   // 构造函数
@@ -26,6 +27,7 @@ export class SFL {
 
     // 注入多个 API 的调用
     this.injectApi(M00_API_LIST);
+    this.injectApi(M01_API_LIST);
     this.injectApi(M03_API_LIST);
     this.injectApi(M04_API_LIST);
   }

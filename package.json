@@ -1,6 +1,6 @@
 {
   "name": "sfl-sdk-js",
-  "version": "0.0.1",
+  "version": "0.0.3-alpha",
   "description": "Official Javascript SDK for Soulful Link Protocol",
   "main": "main.js",
   "type": "module",

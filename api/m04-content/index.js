@@ -1,4 +1,4 @@
-import { get, post, del } from "../../utils/request";
+import { get, post, del } from "../../utils/request.js";
 
 export const M04_API_LIST = {
   // Get Memory Detail
